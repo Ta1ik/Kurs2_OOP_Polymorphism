@@ -14,8 +14,8 @@ public abstract class Transport {
     }
 
     public abstract void startMove();
-
     public abstract void stopMove();
+    public abstract void printType();
 
     public String validateStringParametrs(String value) {
         return value == null || value.isBlank() || value.isEmpty() ? "default" : value;

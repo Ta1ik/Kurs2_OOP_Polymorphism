@@ -1,7 +1,6 @@
 package Drivers;
 
 import Autoracing.Bus;
-
 public class DriverD <D extends Bus> extends Driver{
 
     public DriverD(String fio, boolean hasDriverLicense, int experience) {

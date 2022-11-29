@@ -1,7 +1,42 @@
 package Autoracing;
 
 public class Car extends Transport implements Competing {
+    public enum BodyType {
+        SEDAN("седан"), HATCHBACK("хетчбек"), COUPE("купе"), UNIVERSAL("универсал"), SUV("внедорожник"),
+        CROSSOVER("купе"), PICKUP("пикап"), VAN("грузовик"), MINIVAN("минивен");
 
+        String translate;
+
+        BodyType(String translate) {
+            this.translate = translate;
+        }
+
+        @Override
+        public String toString() {
+            return "Тип кузова: " + translate + ".";
+        }
+    }
+
+
+    private BodyType bodyType;
+
+    @Override
+    public void printType() {
+        if (bodyType == null) {
+            System.out.println("Данных по ТС " + getBrand() + " " + getModel() + " недостаточно.");
+        } else {
+            System.out.println("Автомобиль: " + getBrand() + " " + getModel() + ". " + bodyType);
+        }
+
+    }
+
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
+    }
     public Car(String brand, String model, float engineVolume) {
         super(brand, model, engineVolume);
     }
