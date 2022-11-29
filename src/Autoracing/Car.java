@@ -10,16 +10,12 @@ public class Car extends Transport implements Competing {
         BodyType(String translate) {
             this.translate = translate;
         }
-
         @Override
         public String toString() {
             return "Тип кузова: " + translate + ".";
         }
     }
-
-
     private BodyType bodyType;
-
     @Override
     public void printType() {
         if (bodyType == null) {

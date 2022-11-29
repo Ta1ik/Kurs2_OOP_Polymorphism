@@ -25,6 +25,7 @@ public class Truck extends Transport implements Competing {
             return sb.toString();
         }
     }
+
     private LoadCapacity loadCapacity;
 
     @Override
@@ -43,6 +44,7 @@ public class Truck extends Transport implements Competing {
     public void setLoadCapacity(LoadCapacity loadCapacity) {
         this.loadCapacity = loadCapacity;
     }
+
     public Truck(String brand, String model, float engineVolume) {
         super(brand, model, engineVolume);
     }

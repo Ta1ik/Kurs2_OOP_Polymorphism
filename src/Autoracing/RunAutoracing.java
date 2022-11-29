@@ -91,8 +91,6 @@ public class RunAutoracing {
         scania.printType();
         man.printType();
         separator();
-
-
     }
 
     public static void separator() {

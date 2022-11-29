@@ -25,7 +25,6 @@ public abstract class Transport {
         return value <= 0 ? 1.5f : Math.abs(value);
     }
 
-
     public String getBrand() {
         return brand;
     }
