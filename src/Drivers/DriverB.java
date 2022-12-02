@@ -1,11 +1,10 @@
 package Drivers;
 
 import Autoracing.Car;
-
 public class DriverB<B extends Car> extends Driver {
 
-    public DriverB(String fio, boolean hasDriverLicense, int experience) {
-        super(fio, hasDriverLicense, experience);
+    public DriverB(String fio, String typeDriverLicense, int experience) {
+        super(fio, typeDriverLicense, experience);
     }
 
     @Override
@@ -23,8 +22,8 @@ public class DriverB<B extends Car> extends Driver {
         System.out.printf("Водитель %s заправляет легковой авто.\n", getFio());
     }
 
-
     public void driverInfo(B car) {
         System.out.printf("Водитель %s, управляет автомобилем %s %s и будет участвовать в заезде.\n", getFio(), car.getBrand(), car.getModel());
     }
+
 }

@@ -26,7 +26,12 @@ public class Truck extends Transport implements Competing {
         }
     }
 
+    public Truck(String brand, String model, float engineVolume) {
+        super(brand, model, engineVolume);
+    }
+
     private LoadCapacity loadCapacity;
+    private boolean diagnostic;
 
     @Override
     public void printType() {
@@ -45,10 +50,6 @@ public class Truck extends Transport implements Competing {
         this.loadCapacity = loadCapacity;
     }
 
-    public Truck(String brand, String model, float engineVolume) {
-        super(brand, model, engineVolume);
-    }
-
     @Override
     public void startMove() {
         System.out.printf("Грузовик %s %s начинает движение.\n", getBrand(), getModel());
@@ -60,14 +61,19 @@ public class Truck extends Transport implements Competing {
     }
 
     @Override
-    public String toString() {
-        return String.format("Класс: %s, марка: %s, модель: %s, мощность двигателя %.1fлс.", Truck.class.getSimpleName(), getBrand(), getModel(), getEngineVolume());
+    public boolean passDiagnostics() {
+        if (diagnostic) {
+            System.out.println("Грузовик " + getBrand() + " " + getModel() + " прошел диагностику.");
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public void pitStop() {
-        System.out.printf("Грузовик %s %s заезжает на Pit-stop.", getBrand(), getModel());
-        System.out.printf("\nГрузовик %s %s прошел обслуживание, выезжает из Pit-stop.\n", getBrand(), getModel());
+        System.out.printf("Грузовик %s %s заезжает на Pit-stop.\n", getBrand(), getModel());
+        System.out.printf("Грузовик %s %s прошел обслуживание, выезжает из Pit-stop.\n", getBrand(), getModel());
     }
 
     @Override
@@ -78,5 +84,18 @@ public class Truck extends Transport implements Competing {
     @Override
     public void maxSpeed() {
         System.out.printf("Максимальная скорость грузовика  %s %s составила: %.1f км/ч.\n", getBrand(), getModel(), (100 + Math.random() * (100)));
+    }
+
+    public boolean isDiagnostic() {
+        return diagnostic;
+    }
+
+    public void setDiagnostic(boolean diagnostic) {
+        this.diagnostic = diagnostic;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Класс: %s, марка: %s, модель: %s, мощность двигателя %.1fлс.\n", Truck.class.getSimpleName(), getBrand(), getModel(), getEngineVolume());
     }
 }

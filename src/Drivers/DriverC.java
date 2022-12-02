@@ -1,11 +1,10 @@
 package Drivers;
 
 import Autoracing.Truck;
-
 public class DriverC <C extends Truck> extends Driver{
 
-    public DriverC(String fio, boolean hasDriverLicense, int experience) {
-        super(fio, hasDriverLicense, experience);
+    public DriverC(String fio, String typeDriverLicense, int experience) {
+        super(fio, typeDriverLicense, experience);
     }
 
     @Override

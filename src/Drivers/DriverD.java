@@ -3,8 +3,8 @@ package Drivers;
 import Autoracing.Bus;
 public class DriverD <D extends Bus> extends Driver{
 
-    public DriverD(String fio, boolean hasDriverLicense, int experience) {
-        super(fio, hasDriverLicense, experience);
+    public DriverD(String fio, String typeDriverLicense, int experience) {
+        super(fio, typeDriverLicense, experience);
     }
 
     @Override

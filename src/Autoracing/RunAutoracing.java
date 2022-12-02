@@ -39,16 +39,17 @@ public class RunAutoracing {
         System.out.println(kamaz);
         separator();
 
-        DriverB<Car> leontiev = new DriverB<>("Леонтьев Евгений Викторович", true, 12);
-        DriverB<Car> fedorov = new DriverB<>("Федоров Александр Петрович", true, 10);
+
+        DriverB<Car> leontiev = new DriverB<>("Леонтьев Евгений Викторович", "B", 12);
+        DriverB<Car> fedorov = new DriverB<>("Федоров Александр Петрович", "B", 10);
         leontiev.driverInfo(ferrari);
         fedorov.driverInfo(pagani);
-        DriverC<Truck> semenov = new DriverC<>("Семенов Игорь Иванович", true, 7);
-        DriverC<Truck> antonov = new DriverC<>("Антонов Петр Петрович", true, 25);
+        DriverC<Truck> semenov = new DriverC<>("Семенов Игорь Иванович", "C", 7);
+        DriverC<Truck> antonov = new DriverC<>("Антонов Петр Петрович", "C", 25);
         semenov.driverInfo(kamaz);
         antonov.driverInfo(man);
-        DriverD<Bus> ivanov = new DriverD<>("", true, 16);
-        DriverD<Bus> seleznev = new DriverD<>("Селезнев Вальдемар Сингузмундович", true, 19);
+        DriverD<Bus> ivanov = new DriverD<>("", "D", 16);
+        DriverD<Bus> seleznev = new DriverD<>("Селезнев Вальдемар Сингузмундович", "D", 19);
         ivanov.driverInfo(ikarus);
         seleznev.driverInfo(liaz);
         separator();
@@ -81,8 +82,8 @@ public class RunAutoracing {
         porsche.printType();
         pagani.printType();
         separator();
-        kia.setCapacity(Bus.SitCapacity.AVERAGE);
-        liaz.setCapacity(Bus.SitCapacity.EXTRA_SMALL);
+        kia.setCapacity(Bus.Capacity.AVERAGE);
+        liaz.setCapacity(Bus.Capacity.EXTRA_SMALL);
         kia.printType();
         liaz.printType();
         separator();
@@ -91,6 +92,26 @@ public class RunAutoracing {
         scania.printType();
         man.printType();
         separator();
+
+        //Homework Exception
+        ivanov.testLic();
+        ferrari.setDiagnostic(true);
+        porsche.setDiagnostic(true);
+        lamborghini.setDiagnostic(true);
+        lamborghini.passDiagnostics();
+        man.setDiagnostic(true);
+        checkDiagnostics(ferrari, porsche, lamborghini, pagani, kia, ikarus, hyundai, liaz, man, scania, volvo, kamaz);
+    }
+
+    public static void checkDiagnostics(Transport... transports) {
+        for (Transport transport : transports) {
+            try {
+                if (!transport.passDiagnostics())
+                    throw new RuntimeException();
+            } catch (RuntimeException e) {
+                System.out.println(transport.getClass().getSimpleName() + " " + transport.getBrand() + " " + transport.getModel() + " необходимо пройти диагностику.");
+            }
+        }
     }
 
     public static void separator() {

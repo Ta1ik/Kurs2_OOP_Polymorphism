@@ -1,12 +1,12 @@
 package Autoracing;
 
 public class Bus extends Transport implements Competing {
-    public enum SitCapacity {
+    public enum Capacity {
         EXTRA_SMALL(null, 10), SMALL(null, 25), AVERAGE(40, 50),
         BIG(60, 80), EXTRA_BIG(100, 120);
         Integer minCapacity, maxCapacity;
 
-        SitCapacity(Integer minCapacity, Integer maxCapacity) {
+        Capacity(Integer minCapacity, Integer maxCapacity) {
             this.minCapacity = minCapacity;
             this.maxCapacity = maxCapacity;
         }
@@ -27,15 +27,20 @@ public class Bus extends Transport implements Competing {
 
     }
 
-    private SitCapacity capacity;
+    private Capacity capacity;
 
-    public SitCapacity getCapacity() {
+    public Capacity getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(SitCapacity capacity) {
+    public void setCapacity(Capacity capacity) {
         this.capacity = capacity;
     }
+
+    public Bus(String brand, String model, float engineVolume) {
+        super(brand, model, engineVolume);
+    }
+
     @Override
     public void printType() {
         if (capacity == null) {
@@ -43,10 +48,6 @@ public class Bus extends Transport implements Competing {
         } else {
             System.out.println("Вместимость: " + capacity);
         }
-    }
-
-    public Bus(String brand, String model, float engineVolume) {
-        super(brand, model, engineVolume);
     }
 
     @Override
@@ -60,14 +61,15 @@ public class Bus extends Transport implements Competing {
     }
 
     @Override
-    public String toString() {
-        return String.format("Класс: %s, марка: %s, модель: %s, мощность двигателя %.1fлс.", Bus.class.getSimpleName(), getBrand(), getModel(), getEngineVolume());
+    public boolean passDiagnostics() {
+        System.out.println("Автобус " +getBrand() + "" + getModel() + " не нуждается в диагностике");
+        return true;
     }
 
     @Override
     public void pitStop() {
-        System.out.printf("Автобус %s %s заезжает на Pit-stop.", getBrand(), getModel());
-        System.out.printf("\nАвтобус %s %s прошел обслуживание, выезжает из Pit-stop.\n", getBrand(), getModel());
+        System.out.printf("Автобус %s %s заезжает на Pit-stop.\n", getBrand(), getModel());
+        System.out.printf("Автобус %s %s прошел обслуживание, выезжает из Pit-stop.\n", getBrand(), getModel());
     }
 
     @Override
@@ -78,6 +80,11 @@ public class Bus extends Transport implements Competing {
     @Override
     public void maxSpeed() {
         System.out.printf("Максимальная скорость автобуса %s %s  составила: %.1f км/ч.\n", getBrand(), getModel(), (100 + Math.random() * (100)));
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Класс: %s, марка: %s, модель: %s, мощность двигателя %.1fлс.\n", Bus.class.getSimpleName(), getBrand(), getModel(), getEngineVolume());
     }
 }
 
