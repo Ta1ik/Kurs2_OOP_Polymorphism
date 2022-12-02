@@ -39,12 +39,12 @@ public class RunAutoracing {
         System.out.println(kamaz);
         separator();
 
-        DriverB<Car> leontiev = new DriverB<>("Леонтьев Евгений Викторович", true,12);
-        DriverB<Car> fedorov = new DriverB<>("Федоров Александр Петрович", true,10);
+        DriverB<Car> leontiev = new DriverB<>("Леонтьев Евгений Викторович", true, 12);
+        DriverB<Car> fedorov = new DriverB<>("Федоров Александр Петрович", true, 10);
         leontiev.driverInfo(ferrari);
         fedorov.driverInfo(pagani);
-        DriverC<Truck> semenov = new DriverC<>("Семенов Игорь Иванович",true,7);
-        DriverC<Truck> antonov = new DriverC<>("Антонов Петр Петрович",true,25);
+        DriverC<Truck> semenov = new DriverC<>("Семенов Игорь Иванович", true, 7);
+        DriverC<Truck> antonov = new DriverC<>("Антонов Петр Петрович", true, 25);
         semenov.driverInfo(kamaz);
         antonov.driverInfo(man);
         DriverD<Bus> ivanov = new DriverD<>("", true, 16);
@@ -74,7 +74,23 @@ public class RunAutoracing {
         man.bestTimeLap();
         separator();
 
-
+        //--Homework Enum
+        ferrari.setBodyType(Car.BodyType.COUPE);
+        porsche.setBodyType(Car.BodyType.SEDAN);
+        ferrari.printType();
+        porsche.printType();
+        pagani.printType();
+        separator();
+        kia.setCapacity(Bus.SitCapacity.AVERAGE);
+        liaz.setCapacity(Bus.SitCapacity.EXTRA_SMALL);
+        kia.printType();
+        liaz.printType();
+        separator();
+        scania.setLoadCapacity(Truck.LoadCapacity.N2);
+        man.setLoadCapacity(Truck.LoadCapacity.N3);
+        scania.printType();
+        man.printType();
+        separator();
     }
 
     public static void separator() {

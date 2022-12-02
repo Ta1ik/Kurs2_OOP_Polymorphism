@@ -14,8 +14,8 @@ public abstract class Transport {
     }
 
     public abstract void startMove();
-
     public abstract void stopMove();
+    public abstract void printType();
 
     public String validateStringParametrs(String value) {
         return value == null || value.isBlank() || value.isEmpty() ? "default" : value;
@@ -24,7 +24,6 @@ public abstract class Transport {
     public float validateFloatParametrs(float value) {
         return value <= 0 ? 1.5f : Math.abs(value);
     }
-
 
     public String getBrand() {
         return brand;

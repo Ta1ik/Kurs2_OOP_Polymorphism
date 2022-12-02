@@ -1,6 +1,49 @@
 package Autoracing;
 
 public class Truck extends Transport implements Competing {
+    public enum LoadCapacity {
+        N1(null, 3.5f), N2(3.5f, 12f), N3(12f, null);
+        Float minCapacity, maxCapacity;
+
+        LoadCapacity(Float minCapacity, Float maxCapacity) {
+            this.minCapacity = minCapacity;
+            this.maxCapacity = maxCapacity;
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Грузоподьемность");
+            if (minCapacity == null) {
+                sb.append(" до ").append(maxCapacity).append(" т.");
+            }
+            if (maxCapacity == null) {
+                sb.append(" от ").append(minCapacity).append(" т.");
+            } else if (minCapacity != null && maxCapacity != null) {
+                sb.append(" от ").append(minCapacity).append(" до ").append(maxCapacity).append(" т.");
+            }
+            return sb.toString();
+        }
+    }
+
+    private LoadCapacity loadCapacity;
+
+    @Override
+    public void printType() {
+        if (loadCapacity == null) {
+            System.out.println("Данных по ТС " + getBrand() + " " + getModel() + " недостаточно.");
+        } else {
+            System.out.println("Грузоподьемность: " + loadCapacity);
+        }
+    }
+
+    public LoadCapacity getLoadCapacity() {
+        return loadCapacity;
+    }
+
+    public void setLoadCapacity(LoadCapacity loadCapacity) {
+        this.loadCapacity = loadCapacity;
+    }
 
     public Truck(String brand, String model, float engineVolume) {
         super(brand, model, engineVolume);
