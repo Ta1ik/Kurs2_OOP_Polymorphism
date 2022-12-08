@@ -8,22 +8,27 @@ public abstract class Transport {
     private float engineVolume;
 
     public Transport(String brand, String model, float engineVolume) {
-        this.brand = validateStringParametrs(brand);
-        this.model = validateStringParametrs(model);
-        this.engineVolume = validateFloatParametrs(engineVolume);
+        this.brand = validateStringParameters(brand);
+        this.model = validateStringParameters(model);
+        this.engineVolume = validateFloatParameters(engineVolume);
     }
 
-    public abstract void startMove();
-    public abstract void stopMove();
     public abstract void printType();
 
-    public String validateStringParametrs(String value) {
+    public abstract void startMove();
+
+    public abstract void stopMove();
+
+    public abstract boolean passDiagnostics();
+
+    public String validateStringParameters(String value) {
         return value == null || value.isBlank() || value.isEmpty() ? "default" : value;
     }
 
-    public float validateFloatParametrs(float value) {
+    public float validateFloatParameters(float value) {
         return value <= 0 ? 1.5f : Math.abs(value);
     }
+
 
     public String getBrand() {
         return brand;

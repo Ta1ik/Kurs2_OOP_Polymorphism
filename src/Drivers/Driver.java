@@ -2,23 +2,34 @@ package Drivers;
 
 public abstract class Driver {
     private String fio;
-    private boolean hasDriverLicense;
+    private String typeDriverLicense;
     private int experience;
 
     public abstract void startMove();
+
     public abstract void stop();
+
     public abstract void refill();
 
-    public String validateStringParametrs(String value){
-        return value == null || value.isBlank() || value.isEmpty() ? "Иванов Иван Иванович" : value;
+    public void testLic() {
+        if (!getTypeDriverLicense().isBlank() || !getTypeDriverLicense().isEmpty()) {
+            System.out.println("Тип прав для данного водителя: " + getTypeDriverLicense() + ".");
+        } else {
+            throw new RuntimeException("Необходимо указать тип прав!");
+        }
     }
-    public int validateIntParametrs(int value){
+
+    public String validateStringParametrs(String value) {
+        return value == null || value.isBlank() || value.isEmpty() ? "default" : value;
+    }
+
+    public int validateIntParametrs(int value) {
         return value <= 0 ? 1 : Math.abs(value);
     }
 
-    public Driver(String fio, boolean hasDriverLicense, int experience) {
+    public Driver(String fio, String typeDriverLicense, int experience) {
         this.fio = validateStringParametrs(fio);
-        this.hasDriverLicense = hasDriverLicense;
+        this.typeDriverLicense = typeDriverLicense;
         this.experience = validateIntParametrs(experience);
     }
 
@@ -30,12 +41,12 @@ public abstract class Driver {
         this.fio = fio;
     }
 
-    public boolean isHasDriverLicense() {
-        return hasDriverLicense;
+    public String getTypeDriverLicense() {
+        return typeDriverLicense;
     }
 
-    public void setHasDriverLicense(boolean hasDriverLicense) {
-        this.hasDriverLicense = hasDriverLicense;
+    public void setTypeDriverLicense(String typeDriverLicense) {
+        this.typeDriverLicense = validateStringParametrs(typeDriverLicense);
     }
 
     public int getExperience() {
@@ -43,12 +54,12 @@ public abstract class Driver {
     }
 
     public void setExperience(int experience) {
-        this.experience = experience;
+        this.experience = validateIntParametrs(experience);
     }
 
     @Override
     public String toString() {
-        return String.format("Водитель: %s, со стажем вождения: %d лет. Наличие прав: %b.", getFio(), getExperience(), isHasDriverLicense());
+        return String.format("Водитель: %s, со стажем вождения: %d лет. Наличие прав: %s.", getFio(), getExperience(), getTypeDriverLicense());
     }
 
 }
