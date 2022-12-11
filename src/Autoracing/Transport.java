@@ -1,16 +1,24 @@
 package Autoracing;
 
+import Drivers.Driver;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public abstract class Transport {
     private final String brand;
     private final String model;
     private float engineVolume;
+    private ArrayList<Sponsors> sporsors;
+    private ArrayList<Mechanics> mechanics;
+    private ArrayList<Driver> drivers;
 
     public Transport(String brand, String model, float engineVolume) {
         this.brand = validateStringParameters(brand);
         this.model = validateStringParameters(model);
         this.engineVolume = validateFloatParameters(engineVolume);
+        sporsors = new ArrayList<>();
+        mechanics = new ArrayList<>();
+        drivers = new ArrayList<>();
     }
 
     public abstract void printType();
@@ -29,6 +37,17 @@ public abstract class Transport {
         return value <= 0 ? 1.5f : Math.abs(value);
     }
 
+    public ArrayList<Sponsors> getSporsors() {
+        return sporsors;
+    }
+
+    public ArrayList<Mechanics> getMechanics() {
+        return mechanics;
+    }
+
+    public ArrayList<Driver> getDrivers() {
+        return drivers;
+    }
 
     public String getBrand() {
         return brand;

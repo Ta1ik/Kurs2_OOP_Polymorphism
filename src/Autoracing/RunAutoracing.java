@@ -4,6 +4,8 @@ import Drivers.DriverB;
 import Drivers.DriverC;
 import Drivers.DriverD;
 
+import java.util.ArrayList;
+
 public class RunAutoracing {
 
     public static void main(String[] args) {
@@ -101,6 +103,88 @@ public class RunAutoracing {
         lamborghini.passDiagnostics();
         man.setDiagnostic(true);
         checkDiagnostics(ferrari, porsche, lamborghini, pagani, kia, ikarus, hyundai, liaz, man, scania, volvo, kamaz);
+        separator();
+
+        //Homework collection1
+        ArrayList <Transport> allAutomobileRace = new ArrayList<>();
+        allAutomobileRace.add(ferrari);
+        allAutomobileRace.add(porsche);
+        allAutomobileRace.add(lamborghini);
+        allAutomobileRace.add(pagani);
+        allAutomobileRace.add(kia);
+        allAutomobileRace.add(ikarus);
+        allAutomobileRace.add(hyundai);
+        allAutomobileRace.add(liaz);
+        allAutomobileRace.add(man);
+        allAutomobileRace.add(scania);
+        allAutomobileRace.add(volvo);
+        allAutomobileRace.add(kamaz);
+
+
+        Sponsors cocaCola = new Sponsors("Coca-cola", 50_200_000);
+        Sponsors smirnov = new Sponsors("IP Smirnov", 10_000_000);
+        Sponsors truckCenter = new Sponsors("Truck center", 25_000_000);
+
+
+        Mechanics mechanic1 = new Mechanics("Сергей", "Слепнев", "Автомоторс", "Bus");
+        Mechanics mechanic2 = new Mechanics("Алексей", "Серафимов", "Транпорт-компани", "Car");
+        Mechanics mechanic3 = new Mechanics("John", "Stivens", "General Motors", "Car, Truck");
+
+        ferrari.getDrivers().add(leontiev);
+        pagani.getDrivers().add(fedorov);
+        kamaz.getDrivers().add(semenov);
+        man.getDrivers().add(antonov);
+        ikarus.getDrivers().add(ivanov);
+        liaz.getDrivers().add(seleznev);
+
+        ferrari.getSporsors().add(cocaCola);
+        man.getSporsors().add(cocaCola);
+        kia.getSporsors().add(smirnov);
+        scania.getSporsors().add(truckCenter);
+        kamaz.getSporsors().add(truckCenter);
+
+        porsche.getMechanics().add(mechanic2);
+        pagani.getMechanics().add(mechanic2);
+        kia.getMechanics().add(mechanic1);
+        ikarus.getMechanics().add(mechanic1);
+        liaz.getMechanics().add(mechanic1);
+        hyundai.getMechanics().add(mechanic1);
+        scania.getMechanics().add(mechanic3);
+        kamaz.getMechanics().add(mechanic3);
+        ferrari.getMechanics().add(mechanic3);
+
+        cocaCola.sponsoringRace(ferrari,man);
+        mechanic1.doTechnicalInspection(liaz);
+        mechanic3.repairTransport(kamaz);
+        separator();
+
+        infoAboutTransport(ferrari, porsche, lamborghini, pagani, kia, ikarus, hyundai, liaz, man, scania, volvo, kamaz);
+        separator();
+
+        DiagnosticStation<Transport> transportdiagnosticStation = new DiagnosticStation<>();
+        transportdiagnosticStation.addTransport(ferrari);
+        transportdiagnosticStation.addTransport(porsche);
+        transportdiagnosticStation.addTransport(lamborghini);
+        transportdiagnosticStation.addTransport(pagani);
+        transportdiagnosticStation.addTransport(kia);
+        transportdiagnosticStation.addTransport(ikarus);
+        transportdiagnosticStation.addTransport(hyundai);
+        transportdiagnosticStation.addTransport(liaz);
+        transportdiagnosticStation.addTransport(man);
+        transportdiagnosticStation.addTransport(scania);
+        transportdiagnosticStation.addTransport(volvo);
+        transportdiagnosticStation.addTransport(kamaz);
+
+        transportdiagnosticStation.doTechnicalInspection();
+
+    }
+
+    public static void infoAboutTransport(Transport ... transports){
+        for (Transport transport: transports) {
+            System.out.println(transport.getClass().getSimpleName() + ": " + transport.getBrand() + " " + transport.getModel() + ", спонсор: "
+                    + transport.getSporsors() + ", механик: " + transport.getMechanics() + ", \nводитель: " + transport.getDrivers());
+        }
+
     }
 
     public static void checkDiagnostics(Transport... transports) {
@@ -111,6 +195,7 @@ public class RunAutoracing {
             } catch (RuntimeException e) {
                 System.out.println(transport.getClass().getSimpleName() + " " + transport.getBrand() + " " + transport.getModel() + " необходимо пройти диагностику.");
             }
+
         }
     }
 
