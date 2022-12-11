@@ -1,10 +1,13 @@
 package Autoracing;
 
+import Drivers.Driver;
 import Drivers.DriverB;
 import Drivers.DriverC;
 import Drivers.DriverD;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class RunAutoracing {
 
@@ -161,21 +164,45 @@ public class RunAutoracing {
         infoAboutTransport(ferrari, porsche, lamborghini, pagani, kia, ikarus, hyundai, liaz, man, scania, volvo, kamaz);
         separator();
 
-        DiagnosticStation<Transport> transportdiagnosticStation = new DiagnosticStation<>();
-        transportdiagnosticStation.addTransport(ferrari);
-        transportdiagnosticStation.addTransport(porsche);
-        transportdiagnosticStation.addTransport(lamborghini);
-        transportdiagnosticStation.addTransport(pagani);
-        transportdiagnosticStation.addTransport(kia);
-        transportdiagnosticStation.addTransport(ikarus);
-        transportdiagnosticStation.addTransport(hyundai);
-        transportdiagnosticStation.addTransport(liaz);
-        transportdiagnosticStation.addTransport(man);
-        transportdiagnosticStation.addTransport(scania);
-        transportdiagnosticStation.addTransport(volvo);
-        transportdiagnosticStation.addTransport(kamaz);
+        DiagnosticStation<Transport> transportDiagnosticStation = new DiagnosticStation<>();
+        transportDiagnosticStation.addTransport(ferrari);
+        transportDiagnosticStation.addTransport(porsche);
+        transportDiagnosticStation.addTransport(lamborghini);
+        transportDiagnosticStation.addTransport(pagani);
+        transportDiagnosticStation.addTransport(kia);
+        transportDiagnosticStation.addTransport(ikarus);
+        transportDiagnosticStation.addTransport(hyundai);
+        transportDiagnosticStation.addTransport(liaz);
+        transportDiagnosticStation.addTransport(man);
+        transportDiagnosticStation.addTransport(scania);
+        transportDiagnosticStation.addTransport(volvo);
+        transportDiagnosticStation.addTransport(kamaz);
 
-        transportdiagnosticStation.doTechnicalInspection();
+        transportDiagnosticStation.doTechnicalInspection();
+
+        //hw Collections 2 Set
+        Set<Driver> allDrivers = new HashSet<>();
+        allDrivers.add(leontiev);
+        allDrivers.add(fedorov);
+        allDrivers.add(fedorov);
+        allDrivers.add(seleznev);
+        allDrivers.add(semenov);
+        allDrivers.add(antonov);
+        allDrivers.add(ivanov);
+
+        Set<Mechanics> allMechanics = new HashSet<>();
+        allMechanics.add(mechanic1);
+        allMechanics.add(mechanic2);
+        allMechanics.add(mechanic3);
+
+        Set<Sponsors> allSponsors = new HashSet<>();
+        allSponsors.add(cocaCola);
+        allSponsors.add(smirnov);
+        allSponsors.add(truckCenter);
+
+        System.out.println("Водители: "+allDrivers);
+        System.out.println("Механики: "+allMechanics);
+        System.out.println("Спонсоры: "+allSponsors);
 
     }
 
