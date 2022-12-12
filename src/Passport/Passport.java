@@ -86,7 +86,7 @@ public class Passport {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Passport passport = (Passport) o;
-        return numberPassport == passport.numberPassport;
+        return Objects.equals(numberPassport, passport.numberPassport);
     }
 
     @Override
