@@ -34,13 +34,20 @@ public class RunProduct {
         //Hw #2
 
         Recipes pie = new Recipes("Пирог");
-        pie.addProductInRecipe(potato,water,floor,eggs);
+        pie.addProductInRecipe(potato, 4);
+        pie.addProductInRecipe(water, 1);
+        pie.addProductInRecipe(floor,1);
+        pie.addProductInRecipe(eggs,2);
         separator();
         Recipes fresh = new Recipes("Фреш");
-        fresh.addProductInRecipe(banana,apple,juice);
+        fresh.addProductInRecipe(banana,2);
+        fresh.addProductInRecipe(apple,2);
+        fresh.addProductInRecipe(juice,1);
         separator();
         Recipes limonade = new Recipes("Лимонад");
-        limonade.addProductInRecipe(banana,apple,juice);
+        limonade.addProductInRecipe(banana,2);
+        limonade.addProductInRecipe(apple,2);
+        limonade.addProductInRecipe(juice,1);
         Set<Recipes> allRecipes = new HashSet<>();
         pie.addRecipe(allRecipes);
         fresh.addRecipe(allRecipes);
