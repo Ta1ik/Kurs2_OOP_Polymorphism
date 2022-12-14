@@ -1,43 +1,42 @@
 package Supermarket.Product;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Recipes {
-    private Set <Product> someProducts;
+    private HashMap<Product, Integer> someProducts;
     private float sumRecipe;
     private final String nameRecipe;
 
 
     public Recipes(String nameRecipe) {
         this.nameRecipe = nameRecipe;
-        this.someProducts = new HashSet<>();
+        this.someProducts = new HashMap<>();
     }
-    public void addRecipe(Set<Recipes> recipes){
-        if(recipes.contains(this)){
+
+    public void addRecipe(Set<Recipes> recipes) {
+        if (recipes.contains(this)) {
             throw new RuntimeException("Рецепт уже есть в списке.");
         } else {
             recipes.add(this);
         }
     }
 
-    public void addProductInRecipe(Product ... products){
-        someProducts.addAll(Arrays.asList(products));
-        System.out.println("Рецепт: " + nameRecipe);
-        for (Product product: products) {
-            System.out.println("добавляем: " + product.getName());
-            sumRecipe += product.getCost();
+    public void addProductInRecipe(Product product, int count) {
+        if (count <= 0) {
+            count = 1;
+        } else {
+            someProducts.put(product, count);
         }
-        System.out.println("Стоимость нашего блюда: " +sumRecipe + " руб.");
+        System.out.println("добавляем: " + count + "шт. " + product.getName() + " в " + nameRecipe);
+        sumRecipe += product.getCost() * count;
+        System.out.println("Стоимость блюда: " + sumRecipe + " руб.");
     }
 
-    public Set<Product> getSomeProducts() {
+    public HashMap<Product, Integer> getSomeProducts() {
         return someProducts;
     }
 
-    public void setSomeProducts(Set<Product> someProducts) {
+    public void setSomeProducts(HashMap<Product, Integer> someProducts) {
         this.someProducts = someProducts;
     }
 
